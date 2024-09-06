@@ -23,12 +23,6 @@ def get_temps(city):
     weather_data = get_weather_data(city)
     print(weather_data)
     return jsonify(weather_data)
-    # return jsonify({'temperature': 25, 
-    #                 'humidity': 50,
-    #                 'wind_speed': 10,
-    #                 'percipitation': 0.1,
-    #                 'sunchine': 'sunny'
-    #                 })
 
 
 @app.route('/generate_report', methods=['POST'])
@@ -89,7 +83,6 @@ DOCUMENT:
     print(prompt)
     
     text_response = get_llm_response(prompt, max_tokens=3000)
-    # text_response = '{"explanation": "The irregation frequency is 2 days and the irregation amount is 10mm", "irregation_frequency": 2, "irregation_amount": 10.0}'
     print(text_response)
 
     response = json.loads(text_response)
@@ -129,7 +122,6 @@ def get_report_list():
 
     conn = sqlite3.connect('reports.db')
 
-    # Use parameterized query to prevent SQL injection
     cursor = conn.execute("SELECT report_id, report_name, start_date, report FROM reports WHERE user_id = ?", (user_id,))
     reports = cursor.fetchall()
     

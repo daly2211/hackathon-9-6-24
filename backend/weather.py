@@ -2,7 +2,6 @@ import requests
 import os
 
 weather_api_key = os.getenv('WEATHER_API_KEY')
-# Function to get weather data based on city name
 
 def get_weather_data(city):
     
